@@ -1,0 +1,59 @@
+enum ETimeSeriesFunction {
+  TIME_SERIES_INTRADAY
+  TIME_SERIES_DAILY
+  TIME_SERIES_DAILY_ADJUSTED
+  TIME_SERIES_WEEKLY
+}
+
+enum ETimeSeriesInterval {
+  ONE_MIN
+  FIVE_MIN
+  FIFTEEN_MIN
+  THIRTY_MIN
+  SIXTY_MIN
+}
+
+enum EOutputsize {
+  compact
+  full
+}
+
+enum EDatatype {
+  json
+  csv
+}
+
+input TimeSeriesInput {
+  function: ETimeSeriesFunction!
+  symbol: String!
+  interval: ETimeSeriesInterval!
+  adjusted: Boolean
+  extended_hours: Boolean
+  month: String
+  outputsize: EOutputsize
+  datatype: EDatatype
+}
+
+type TimeSeriesOutput {
+  meta: MetaOutput!
+  data: [StockPriceOutput!]!
+  pagination: PaginationOutput
+}
+
+type MetaOutput {
+  information: String!
+  symbol: String!
+  lastRefreshed: String!
+  interval: String!
+  outputSize: String!
+  timezone: String!
+}
+
+type StockPriceOutput {
+  datetime: String!
+  open: Float!
+  high: Float!
+  low: Float!
+  close: Float!
+  volume: Int!
+}

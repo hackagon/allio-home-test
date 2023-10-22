@@ -1,0 +1,25 @@
+type ErrorPayload {
+  field: String
+  message: [String]
+}
+
+type PaginationOutput {
+  page: Int
+  limit: Int
+  totalPage: Int
+  total: Int
+}
+
+input PaginationRequest {
+  page: Int
+  limit: Int
+}
+
+input QueryStringInput {
+  select: [String]
+  where: String
+  orderBy: [String]
+  limit: Int
+  before: String
+  after: String
+}

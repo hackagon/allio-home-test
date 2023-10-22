@@ -1,0 +1,4 @@
+type Query {
+  # Query historical stock price data for a specific symbol and date range
+  getTimeSeriesData(query: TimeSeriesInput!): TimeSeriesOutput
+}
