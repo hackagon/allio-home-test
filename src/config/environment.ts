@@ -1,5 +1,6 @@
 import { plainToInstance } from 'class-transformer';
 import { IsNotEmpty, validateSync } from 'class-validator';
+import _ from 'lodash';
 
 export class EnvironmentVariables {
   @IsNotEmpty()
@@ -22,3 +23,22 @@ export function validate(config: Record<string, unknown>) {
   }
   return validatedConfig;
 }
+
+export const config = {
+  // app
+  PORT: process.env.PORT,
+  SERVICE_NAME: process.env.SERVICE_NAME,
+
+  // alphavantage
+  ALPHAVANTAGE_HOST: process.env.DB_PORT,
+  ALPHAVANTAGE_KEY: process.env.ALPHAVANTAGE_KEY,
+
+  // database
+  DB_HOST: process.env.DB_HOST,
+  DB_PORT: _.parseInt(process.env.DB_PORT, 10),
+  DB_NAME: process.env.DB_NAME,
+  DB_USERNAME: process.env.DB_USERNAME,
+  DB_PASSOWRD: process.env.DB_PASSOWRD,
+};
+
+console.log(config);
