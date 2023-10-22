@@ -69,6 +69,7 @@ export interface IMutation {
 
 export interface IQuery {
     getTimeSeriesData(query: TimeSeriesInput): Nullable<TimeSeriesOutput> | Promise<Nullable<TimeSeriesOutput>>;
+    getMe(): Nullable<UserOutput> | Promise<Nullable<UserOutput>>;
 }
 
 export interface ErrorPayload {
@@ -109,6 +110,11 @@ export interface StockPriceOutput {
     low: number;
     close: number;
     volume: number;
+}
+
+export interface UserOutput {
+    id: string;
+    email: string;
 }
 
 export type DateTime = any;

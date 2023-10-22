@@ -1,0 +1,4 @@
+type UserOutput {
+  id: ID!
+  email: String!
+}

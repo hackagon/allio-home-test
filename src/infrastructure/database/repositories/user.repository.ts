@@ -22,6 +22,13 @@ export class UserRepository {
     return this.userRepository.findOne({ email });
   }
 
+  async findById(id: number) {
+    const foundUser = await this.userRepository.findOne({ id });
+    console.log(id, foundUser);
+
+    return foundUser;
+  }
+
   private buildUserRO(user: UserEntity) {
     const userRO = {
       email: user.email,

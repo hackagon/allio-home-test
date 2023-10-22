@@ -3,7 +3,7 @@ import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { ILoginUseCase } from 'src/domain/usecase/login';
 import { LoginInput, LoginOutput } from '../graphql/typings';
 
-@Resolver()
+@Resolver('login')
 export class LoginResolver {
   constructor(
     @Inject(ILoginUseCase)
