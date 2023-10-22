@@ -1,11 +1,12 @@
 import { UserEntity } from '../entities/user.entity';
-import { EntityRepository, MikroORM } from '@mikro-orm/core';
+import { EntityRepository } from '@mikro-orm/core';
 import { EntityManager } from '@mikro-orm/postgresql';
 import { InjectRepository } from '@mikro-orm/nestjs';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class UserRepository {
   constructor(
-    private readonly orm: MikroORM,
     private readonly em: EntityManager,
     @InjectRepository(UserEntity)
     private readonly userRepository: EntityRepository<UserEntity>,

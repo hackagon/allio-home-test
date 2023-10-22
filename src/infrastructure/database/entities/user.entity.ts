@@ -24,19 +24,15 @@ export class UserEntity {
   @Property({ hidden: true })
   password: string;
 
+  @Property({ type: 'date' })
+  createdAt = new Date();
+
+  @Property({ type: 'date', onUpdate: () => new Date() })
+  updatedAt = new Date();
+
   constructor(email: string, password: string) {
     this.email = email;
 
     this.password = crypto.createHmac('sha256', password).digest('hex');
   }
-
-  toJSON(user?: UserEntity) {
-    const o = wrap<UserEntity>(this).toObject() as UserDTO;
-
-    return o;
-  }
-}
-
-interface UserDTO extends EntityDTO<UserEntity> {
-  following?: boolean;
 }
