@@ -1,0 +1,4 @@
+type Mutation {
+  # User
+  login(data: LoginInput!): LoginOutput!
+}

@@ -13,16 +13,20 @@ export class UserRepository {
 
   async create(userData) {
     const user = new UserEntity(userData.email, userData.password);
-    user.id = 1;
-    // user.email = userData.email;
-    // user.password = userData.password;
 
-    console.log(this.em);
+    await this.em.persistAndFlush(user);
+    return this.buildUserRO(user);
+  }
 
-    const res = await this.userRepository.upsert(user);
+  async findByEmail(email: string) {
+    return this.userRepository.findOne({ email });
+  }
 
-    // await this.em.persistAndFlush(user);
+  private buildUserRO(user: UserEntity) {
+    const userRO = {
+      email: user.email,
+    };
 
-    return res;
+    return { user: userRO };
   }
 }

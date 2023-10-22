@@ -1,0 +1,8 @@
+input LoginInput {
+  email: EmailAddress!
+  password: String!
+}
+
+type LoginOutput {
+  jwt: String!
+}

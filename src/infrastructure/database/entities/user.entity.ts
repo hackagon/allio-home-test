@@ -14,7 +14,7 @@ import { UserRepository } from '../repositories/user.repository';
 export class UserEntity {
   [EntityRepositoryType]?: UserRepository;
 
-  @PrimaryKey()
+  @PrimaryKey({ autoincrement: true })
   id: number;
 
   @Property()
@@ -26,6 +26,7 @@ export class UserEntity {
 
   constructor(email: string, password: string) {
     this.email = email;
+
     this.password = crypto.createHmac('sha256', password).digest('hex');
   }
 

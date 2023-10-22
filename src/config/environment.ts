@@ -28,6 +28,7 @@ export const config = {
   // app
   PORT: process.env.PORT,
   SERVICE_NAME: process.env.SERVICE_NAME,
+  SECRET_KEY: process.env.SECRET_KEY,
 
   // alphavantage
   ALPHAVANTAGE_HOST: process.env.DB_PORT,

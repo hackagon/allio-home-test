@@ -47,6 +47,11 @@ export interface QueryStringInput {
     after?: Nullable<string>;
 }
 
+export interface LoginInput {
+    email: EmailAddress;
+    password: string;
+}
+
 export interface TimeSeriesInput {
     function: ETimeSeriesFunction;
     symbol: string;
@@ -56,6 +61,10 @@ export interface TimeSeriesInput {
     month?: Nullable<string>;
     outputsize?: Nullable<EOutputsize>;
     datatype?: Nullable<EDatatype>;
+}
+
+export interface IMutation {
+    login(data: LoginInput): LoginOutput | Promise<LoginOutput>;
 }
 
 export interface IQuery {
@@ -72,6 +81,10 @@ export interface PaginationOutput {
     limit?: Nullable<number>;
     totalPage?: Nullable<number>;
     total?: Nullable<number>;
+}
+
+export interface LoginOutput {
+    jwt: string;
 }
 
 export interface TimeSeriesOutput {

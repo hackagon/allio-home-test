@@ -12,6 +12,7 @@ import { GraphQLJSONObject } from 'graphql-type-json';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MikroOrmMiddleware, MikroOrmModule } from '@mikro-orm/nestjs';
 import { MikroORM } from '@mikro-orm/core';
+import datasource from './mikro-orm.config';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { MikroORM } from '@mikro-orm/core';
       validate,
     }),
 
-    MikroOrmModule.forRoot(),
+    MikroOrmModule.forRoot(datasource),
 
     GraphQLModule.forRootAsync({
       driver: ApolloDriver,
