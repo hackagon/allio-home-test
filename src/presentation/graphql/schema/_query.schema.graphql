@@ -4,4 +4,7 @@ type Query {
 
   # Get Me
   getMe: UserOutput
+
+  # Get Preferences
+  getPreferences: [PreferenceOutput!]!
 }

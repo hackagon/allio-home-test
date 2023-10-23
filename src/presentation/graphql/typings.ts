@@ -52,6 +52,11 @@ export interface LoginInput {
     password: string;
 }
 
+export interface PreferenceInput {
+    symbol: string;
+    notes: string;
+}
+
 export interface TimeSeriesInput {
     function: ETimeSeriesFunction;
     symbol: string;
@@ -70,6 +75,7 @@ export interface IMutation {
 export interface IQuery {
     getTimeSeriesData(query: TimeSeriesInput): Nullable<TimeSeriesOutput> | Promise<Nullable<TimeSeriesOutput>>;
     getMe(): Nullable<UserOutput> | Promise<Nullable<UserOutput>>;
+    getPreferences(): PreferenceOutput[] | Promise<PreferenceOutput[]>;
 }
 
 export interface ErrorPayload {
@@ -86,6 +92,13 @@ export interface PaginationOutput {
 
 export interface LoginOutput {
     jwt: string;
+}
+
+export interface PreferenceOutput {
+    id: number;
+    userId: number;
+    symbol: string;
+    notes: string;
 }
 
 export interface TimeSeriesOutput {
@@ -113,7 +126,7 @@ export interface StockPriceOutput {
 }
 
 export interface UserOutput {
-    id: string;
+    id: number;
     email: string;
 }
 

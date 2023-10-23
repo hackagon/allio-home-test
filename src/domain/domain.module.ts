@@ -3,6 +3,10 @@ import { JwtModule } from '@nestjs/jwt';
 import { config } from 'src/config';
 import { AlphaVantageModule } from 'src/infrastructure/alphavantage/alphavantage.module';
 import { DatabaseModule } from 'src/infrastructure/database';
+import {
+  FindPreferencesUseCase,
+  IFindPreferencesUseCase,
+} from './usecase/find-preferences';
 import { FindUserUseCase, IFindUserUseCase } from './usecase/find-user';
 import { ILoginUseCase, LoginUseCase } from './usecase/login';
 import { IRegisterUseCase, RegisterUseCase } from './usecase/register';
@@ -38,12 +42,17 @@ import {
       provide: IFindUserUseCase,
       useClass: FindUserUseCase,
     },
+    {
+      provide: IFindPreferencesUseCase,
+      useClass: FindPreferencesUseCase,
+    },
   ],
   exports: [
     IGetTimeSeriesDataUseCase,
     IRegisterUseCase,
     ILoginUseCase,
     IFindUserUseCase,
+    IFindPreferencesUseCase,
   ],
 })
 export class DomainModule {}

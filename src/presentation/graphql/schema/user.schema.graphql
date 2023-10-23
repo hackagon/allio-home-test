@@ -1,4 +1,4 @@
 type UserOutput {
-  id: ID!
+  id: Int!
   email: String!
 }

@@ -41,5 +41,3 @@ export const config = {
   DB_USERNAME: process.env.DB_USERNAME,
   DB_PASSOWRD: process.env.DB_PASSOWRD,
 };
-
-console.log(config);

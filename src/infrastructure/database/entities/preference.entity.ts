@@ -1,9 +1,7 @@
-import { Entity, PrimaryKey, Property, wrap } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
 @Entity({ tableName: 'preference' })
 export class PreferenceEntity {
-  // [EntityRepositoryType]?: UserRepository;
-
   @PrimaryKey({ autoincrement: true })
   id: number;
 

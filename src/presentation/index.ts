@@ -4,12 +4,13 @@ import { DomainModule } from 'src/domain/domain.module';
 import { HealthCheckController } from './controller/healthcheck.controller';
 import { UserController } from './controller/user.controller';
 import { LoginResolver } from './resolver/login.resolver';
+import { PreferenceResolver } from './resolver/preference.resolver';
 import { StockResolver } from './resolver/stock.resolver';
 import { UserResolver } from './resolver/user.resolver';
 
 @Module({
   imports: [TerminusModule, DomainModule],
-  providers: [StockResolver, LoginResolver, UserResolver],
+  providers: [StockResolver, LoginResolver, UserResolver, PreferenceResolver],
   controllers: [HealthCheckController, UserController],
 })
 export class PresentationModule {}

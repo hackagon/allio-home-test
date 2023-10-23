@@ -1,0 +1,11 @@
+input PreferenceInput {
+  symbol: String!
+  notes: String!
+}
+
+type PreferenceOutput {
+  id: Int!
+  userId: Int!
+  symbol: String!
+  notes: String!
+}

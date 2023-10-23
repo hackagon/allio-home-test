@@ -7,6 +7,10 @@ import { PreferenceEntity } from '../entities/preference.entity';
 export class PreferenceRepository {
   constructor(
     @InjectRepository(PreferenceEntity)
-    private readonly userRepository: EntityRepository<PreferenceEntity>,
+    private readonly preferenceRepository: EntityRepository<PreferenceEntity>,
   ) {}
+
+  findAll(userId: number) {
+    return this.preferenceRepository.find({ userId });
+  }
 }
