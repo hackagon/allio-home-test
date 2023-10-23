@@ -18,7 +18,6 @@ export class PreferenceResolver {
   async getPreferences(
     @CurrentUser() user: UserEntity,
   ): Promise<PreferenceOutput> {
-    console.log(user);
     return this.findPreferencesUseCase.execute(user.id);
   }
 }

@@ -15,16 +15,25 @@ import {
   GetTimeSeriesDataUseCase,
 } from './usecase/time-series';
 
+/**
+ * Module encapsulating domain-related functionality and dependencies.
+ * This module provides services for user registration, login, data retrieval, and preferences management.
+ */
 @Module({
   imports: [
+    // Configure global JWT authentication with specified secret key and token expiration time
     JwtModule.register({
       global: true,
       secret: config.SECRET_KEY,
       signOptions: { expiresIn: '1d' },
     }),
+
+    // Import external modules for Alpha Vantage API integration and database connectivity
     AlphaVantageModule,
     DatabaseModule,
   ],
+
+  // Provide implementations for various domain use cases
   providers: [
     {
       provide: IGetTimeSeriesDataUseCase,
@@ -47,6 +56,8 @@ import {
       useClass: FindPreferencesUseCase,
     },
   ],
+
+  // Export domain-related use cases for use in other modules
   exports: [
     IGetTimeSeriesDataUseCase,
     IRegisterUseCase,

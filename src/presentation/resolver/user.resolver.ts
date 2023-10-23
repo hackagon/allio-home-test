@@ -16,7 +16,6 @@ export class UserResolver {
   @Query('getMe')
   @UseGuards(AuthGuard)
   async getMe(@CurrentUser() user: UserEntity): Promise<UserOutput> {
-    console.log(user);
     return this.findUserUseCase.execute(user.id);
   }
 }

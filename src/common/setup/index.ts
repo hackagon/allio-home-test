@@ -1,7 +1,12 @@
 import { ConfigService } from '@nestjs/config';
 import { INestApplication } from '@nestjs/common';
-import _ from 'lodash';
 
+/**
+ * Sets up a NestJS application with CORS configuration and retrieves configuration settings.
+ *
+ * @param app - The NestJS application instance.
+ * @returns An object with port information and a logInfo method for logging application details.
+ */
 const setUpApplication = (app: INestApplication) => {
   app.enableCors({
     origin: '*',

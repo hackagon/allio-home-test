@@ -1,73 +1,91 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Project Name
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A brief introduction to your project goes here.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
 
-## Description
+- [Project Overview](#project-overview)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+  - [1. Start PostgreSQL](#1-start-postgresql)
+  - [2. Create a .env File](#2-create-a-env-file)
+  - [3. Run Migrations](#3-run-migrations)
+  - [4. Run the Project](#4-run-the-project)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Project Overview
 
-## Installation
+This project is a NestJS application that utilizes AlphaVantage to connect to the time series stock API and stores data in a PostgreSQL database using Mikro ORM. The project follows a clean architecture with a clear separation of layers: presentation, domain, and infrastructure.
 
-```bash
-$ yarn install
-```
+- **Presentation**: Contains controllers, GraphQL resolvers, and mutations.
+- **Domain**: Contains use cases and business logic.
+- **Infrastructure**: Connects to AlphaVantage API and the PostgreSQL database.
 
-## Running the app
+## Prerequisites
 
-```bash
-# development
-$ yarn run start
+Before you begin, ensure you have the following prerequisites installed on your system:
 
-# watch mode
-$ yarn run start:dev
+- [Docker](https://www.docker.com/) for running PostgreSQL using Docker Compose.
+- [Node.js](https://nodejs.org/) for running JavaScript/TypeScript code.
+- [Yarn](https://classic.yarnpkg.com/en/docs/install) for managing dependencies.
 
-# production mode
-$ yarn run start:prod
-```
+## Getting Started
 
-## Test
+Follow these steps to set up and run the project:
+
+### 1. Start PostgreSQL
+
+To run PostgreSQL using Docker Compose, execute the following command:
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+docker-compose up postgres
 ```
 
-## Support
+### 2. Create a .env File
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Create a `.env` file similar to the provided `.env.example` file and set the necessary environment variables. These variables may include database connection details, AlphaVantage API key, and other configurations.
 
-## Stay in touch
+### 3. Run Migrations
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+To set up the database schema, run the Mikro ORM migrations:
+
+```bash
+npx dotenv mikro-orm migration:up
+```
+
+### 4. Import dummy data
+
+Import dummy data from `dummy` folder by copy and past \*.sql files to sql editor
+
+### 5. Run the Project
+
+Start the NestJS application by running:
+
+```bash
+yarn start
+```
+
+## Project Structure
+
+The project follows a clean architecture with the following directory structure:
+
+- `presentation`: Contains controllers, GraphQL resolvers, and mutations.
+- `domain`: Contains use cases and business logic.
+- `infrastructure`: Connects to AlphaVantage API and the PostgreSQL database.
+
+You can find more specific code and organization details within each of these directories.
+
+## Usage
+
+Provide information on how to use the project, including API endpoints, GraphQL queries/mutations, and any other relevant usage instructions.
+
+## Contributing
+
+If you'd like to contribute to this project, please follow our [contribution guidelines](CONTRIBUTING.md).
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the [License Name] License - see the [LICENSE.md](LICENSE.md) file for details.

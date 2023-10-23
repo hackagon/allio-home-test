@@ -14,15 +14,21 @@ import { MikroOrmMiddleware, MikroOrmModule } from '@mikro-orm/nestjs';
 import { MikroORM } from '@mikro-orm/core';
 import datasource from './mikro-orm.config';
 
+/**
+ * The central module of the NestJS application, responsible for configuring and initializing various components.
+ */
 @Module({
   imports: [
+    // Load configuration settings
     ConfigModule.forRoot({
       isGlobal: true,
       validate,
     }),
 
+    // Set up MikroORM with the provided datasource configuration
     MikroOrmModule.forRoot(datasource),
 
+    // Configure GraphQL with Apollo driver and resolvers
     GraphQLModule.forRootAsync({
       driver: ApolloDriver,
       useFactory: async (): Promise<ApolloDriverConfig> => ({
@@ -37,6 +43,8 @@ import datasource from './mikro-orm.config';
         playground: true,
       }),
     }),
+
+    // Import the PresentationModule
     PresentationModule,
   ],
 })

@@ -4,6 +4,25 @@ networks:
   node-network:
     driver: bridge
 
+services:
+  nest-app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: nest_app
+    container_name: nest_app_container
+    env_file: .env
+    environment:
+      - POSTGRES_HOST=postgres
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    volumes:
+      - .:/var/www
+    networks:
+      - node-network
+
   postgres:
     container_name: postgres_container
     image: postgres
@@ -17,25 +36,12 @@ networks:
       - 15432:5432
     networks:
       - node-network
-
-services:
-  nest-app:
-    build: .
-    image: nest_app
-    container_name: nest_app_container
-    env_file: .env
-    environment:
-      - POSTGRES_HOST=postgres
-    ports:
-      - '5010:5010'
-    depends_on:
-      - postgres
-    volumes:
-      - .:/var/www
-    networks:
-      - node-network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   dbdata:
-  pgadmin:
   node_modules:

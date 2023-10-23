@@ -1,0 +1,1 @@
+INSERT INTO "user" ("id", "email", "password", "created_at", "updated_at") VALUES (1, 'nsc.test@gmail.com', '4ec2d6301438293744ef2b75a947271d192bf53b704579ac25d2e1d9fcb1d4f6', '2023-10-23 15:15:07+00', '2023-10-23 15:15:07+00');

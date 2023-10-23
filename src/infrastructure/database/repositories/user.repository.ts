@@ -25,7 +25,6 @@ export class UserRepository {
 
   async findById(id: number) {
     const foundUser = await this.userRepository.findOne({ id });
-    console.log(id, foundUser);
 
     return foundUser;
   }
