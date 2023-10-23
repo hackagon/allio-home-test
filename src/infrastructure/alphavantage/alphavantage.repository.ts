@@ -3,6 +3,7 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { AxiosError } from 'axios';
 import { catchError, firstValueFrom } from 'rxjs';
 import * as Dto from './dto';
+import { timeIntetvalMapper } from './utils';
 
 @Injectable()
 export class AlphaVantageRepository {
@@ -16,7 +17,7 @@ export class AlphaVantageRepository {
           url: process.env.ALPHAVANTAGE_HOST,
           params: {
             ...query,
-            interval: '5min',
+            interval: timeIntetvalMapper[query.interval],
             apikey: process.env.ALPHAVANTAGE_KEY,
           },
         })
