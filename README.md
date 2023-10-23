@@ -80,7 +80,69 @@ You can find more specific code and organization details within each of these di
 
 ## Usage
 
-Provide information on how to use the project, including API endpoints, GraphQL queries/mutations, and any other relevant usage instructions.
+To test the API using Postman, follow these steps:
+
+1. **Open Postman**: If you don't have Postman installed, download and install it from [here](https://www.postman.com/).
+
+2. **Create a New GraphQL Request**:
+
+   - Open Postman and create a new request.
+   - Set the request method to POST.
+   - Enter the URL: `http://localhost:5010/graphql`.
+
+3. **Use the `getTimeSeriesData` Query**:
+
+   - In the request body, select the "GraphQL" option.
+   - Use the `getTimeSeriesData` query to retrieve data. You can specify the function and interval like this:
+
+   ```graphql
+   query {
+     getTimeSeriesData(function: TIME_SERIES_INTRADAY, interval: ONE_MIN) {
+       # Add your desired fields here
+     }
+   }
+   ```
+
+   Replace `function` and `interval` with your desired values.
+
+4. **Login using the `login` Mutation**:
+
+   - Create a new request in Postman.
+   - Set the request method to POST.
+   - Enter the URL: `http://localhost:5010/graphql`.
+   - In the request body, select the "GraphQL" option.
+   - Use the `login` mutation to log in. Provide the email and password like this:
+
+   ```graphql
+   mutation {
+     login(input: {
+       email: "nsc.test@gmail.com",
+       password: "nsctest"
+     }) {
+       # Add your desired response fields here
+     }
+   }
+   ```
+
+   This will log you in and return a token that you'll need for subsequent requests.
+
+5. **Get User Preferences**:
+
+   - Create a new request in Postman.
+   - Set the request method to POST.
+   - Enter the URL: `http://localhost:5010/graphql`.
+   - In the request body, select the "GraphQL" option.
+   - Use the `getMe` query to get user preferences, and make sure to include the Bearer token in the Authorization header. Replace `"YOUR_TOKEN"` with the actual token received after login:
+
+   ```graphql
+   query {
+     getPreferences {
+       # Add your desired response fields here
+     }
+   }
+   ```
+
+You can repeat these steps for different queries and mutations as needed to test your NestJS GraphQL API with Postman.
 
 ## Contributing
 
